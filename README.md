@@ -23,7 +23,7 @@ $ cmake -B build -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_TOOLCHAIN_FILE=$VCPKG_INSTALL_DIR/scripts/buildsystems/vcpkg.cmake \
                 -DVCPKG_TARGET_TRIPLET=x64-windows-static
 ```
-you might need to change the ```$VCPKG_INSTALL_DIR``` with an __*absolute path*__ of the directory where the vcpkg package manager has been installed. At least on my Ubuntu 20.10 this was the case. Then you might need to download any missing dependencies of the library for your operating system. For example, on my machine the glm dependency was missing, so I had to download it using the following commands:
+you __*will*__ need to change the ```$VCPKG_INSTALL_DIR``` with an __*absolute path*__ of the directory where the vcpkg package manager has been installed (initially I thought that ```$VCPKG_INSTALL_DIR``` was a CMake macro command that would find the install directory of the vcpkg package manager automagically because, as I understand, using the vcpkg package manager with CMake is a very common toolchain). Then you might need to download any missing dependencies of the library for your operating system. For example, on my machine the glm dependency was missing, so I had to download it using the following commands:
 ```sh
 $ sudo apt update
 $ sudo apt install libglm-dev
@@ -44,7 +44,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sgg::sgg)
 ```
 To clone the project, cd to your desired destination and run:
 ```sh
-git clone https://github.com/iliaskap12/1942_berlin.git
+$ git clone https://github.com/iliaskap12/1942_berlin.git
 ```
 
 After you've completed all these steps you are ready to contribute any way you want, any cool feature/idea of yours or any requirement listed in the requirements document (pending). Don't push directly to the master branch, instead create a branch and push from there, and we will handle the integration at the pull request.
